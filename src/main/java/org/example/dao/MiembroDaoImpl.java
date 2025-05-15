@@ -19,7 +19,7 @@ public class MiembroDaoImpl implements MiembroDao {
             statement.setInt(1, miembro.getMiembroId());
             statement.setString(2, miembro.getNombre());
             statement.setString(3, miembro.getApellido());
-            statement.setDate(4, miembro.getFechaInscripcion());
+            statement.setDate(4, Date.valueOf(miembro.getFechaInscripcion()));
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -32,7 +32,7 @@ public class MiembroDaoImpl implements MiembroDao {
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, miembro.getNombre());
             statement.setString(2, miembro.getApellido());
-            statement.setDate(3, miembro.getFechaInscripcion());
+            statement.setDate(3, Date.valueOf(miembro.getFechaInscripcion()));
             statement.setInt(4, miembro.getMiembroId());
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -62,7 +62,7 @@ public class MiembroDaoImpl implements MiembroDao {
                         resultSet.getInt("miembro_id"),
                         resultSet.getString("nombre"),
                         resultSet.getString("apellido"),
-                        resultSet.getDate("fecha_inscripcion")
+                        resultSet.getDate("fecha_inscripcion").toLocalDate()
                 );
             }
         } catch (SQLException e) {
@@ -82,7 +82,7 @@ public class MiembroDaoImpl implements MiembroDao {
                         resultSet.getInt("miembro_id"),
                         resultSet.getString("nombre"),
                         resultSet.getString("apellido"),
-                        resultSet.getDate("fecha_inscripcion")
+                        resultSet.getDate("fecha_inscripcion").toLocalDate()
                 ));
             }
         } catch (SQLException e) {

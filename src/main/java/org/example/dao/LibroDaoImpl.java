@@ -21,11 +21,14 @@ public class LibroDaoImpl implements LibroDao{
             statement.setString(2, libro.getTitulo());
             statement.setString(3, libro.getGenero());
             statement.setInt(4, libro.getAutorId());
+
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
+
 
     @Override
     public Libro leer(int libroId) {

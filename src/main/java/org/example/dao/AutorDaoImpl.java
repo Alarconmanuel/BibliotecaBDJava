@@ -14,19 +14,18 @@ public class AutorDaoImpl implements AutorDao {
 
     @Override
     public void agregarAutor(Autor autor) {
-        String sql = "INSERT INTO autores (nombre, apellido, nacionalidad) VALUES (?, ?, ?)";
-        try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            statement.setString(1, autor.getNombre());
-            statement.setString(2, autor.getApellido());
-            statement.setString(3, autor.getNacionalidad());
-            statement.executeUpdate();
+        String sql = "INSERT INTO autores (autor_id, nombre, apellido, nacionalidad) VALUES (?, ?, ?, ?)";
 
-            ResultSet generatedKeys = statement.getGeneratedKeys();
-            if (generatedKeys.next()) {
-                autor.setAutorId(generatedKeys.getInt(1));
-            }
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, autor.getAutorId());
+            statement.setString(2, autor.getNombre());
+            statement.setString(3, autor.getApellido());
+            statement.setString(4, autor.getNacionalidad());
+
+            statement.executeUpdate();
+            System.out.println("Autor agregado correctamente.");
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Error al agregar autor: " + e.getMessage());
         }
     }
 

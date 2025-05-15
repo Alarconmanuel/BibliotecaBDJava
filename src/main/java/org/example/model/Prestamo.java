@@ -39,8 +39,7 @@ public class Prestamo {
         return (java.sql.Date) fechaPrestamo;
     }
 
-    public void setFechaPrestamo(Date fechaPrestamo) {
-        this.fechaPrestamo = fechaPrestamo;
+    public void setFechaprestamo(java.sql.Date date) {
     }
 
     public java.sql.Date getFechaDevolucion() {
@@ -67,21 +66,6 @@ public class Prestamo {
         this.miembroId = miembroId;
     }
 
-    public Libro getLibro() {
-        return libro;
-    }
-
-    public void setLibro(Libro libro) {
-        this.libro = libro;
-    }
-
-    public Miembro getMiembro() {
-        return miembro;
-    }
-
-    public void setMiembro(Miembro miembro) {
-        this.miembro = miembro;
-    }
 
     @Override
     public String toString() {
@@ -95,6 +79,7 @@ public class Prestamo {
                 ", miembro=" + miembro +
                 '}';
     }
+
 }
 
 

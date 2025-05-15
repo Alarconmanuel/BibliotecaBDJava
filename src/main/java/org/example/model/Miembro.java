@@ -1,17 +1,15 @@
 package org.example.model;
 
-import java.util.Date;
+import java.sql.Date;
+import java.time.LocalDate;
 
 public class Miembro {
     private int miembroId;
     private String nombre;
     private String apellido;
-    private Date fechaInscripcion;
+    private LocalDate fechaInscripcion;
 
-    public Miembro() {
-    }
-
-    public Miembro(int miembroId, String nombre, String apellido, Date fechaInscripcion) {
+    public Miembro(int miembroId, String nombre, String apellido, LocalDate fechaInscripcion) {
         this.miembroId = miembroId;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -42,11 +40,11 @@ public class Miembro {
         this.apellido = apellido;
     }
 
-    public java.sql.Date getFechaInscripcion() {
-        return (java.sql.Date) fechaInscripcion;
+    public LocalDate getFechaInscripcion() {
+        return fechaInscripcion;
     }
 
-    public void setFechaInscripcion(Date fechaInscripcion) {
+    public void setFechaInscripcion(LocalDate fechaInscripcion) {
         this.fechaInscripcion = fechaInscripcion;
     }
 
